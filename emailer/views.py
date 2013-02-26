@@ -1,7 +1,9 @@
 import json
 from boto import ses
 from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 from easyform.settings import AWS_ACCESS_KEY_ID, AWS_SECRET_KEY
+from .models import Key
 
 # Create your views here.
 def json_response(func):
@@ -31,6 +33,9 @@ def home(request):
 
 @json_response
 def mailer(request):
+    api_key = request.REQUEST.get("api_key", "")
+    key = get_object_or_404(Key, api_key=api_key)
+
     for k in ["name", "email", "subject", "body", "to_addresses"]:
         if k not in request.REQUEST:
             return {'message' : 'ERROR, param %s missing' % k}
