@@ -4,7 +4,6 @@ from uuid import uuid4
 
 # Create your models here.
 class Key(models.Model):
-    server_name = models.CharField(max_length=100)
     api_key = models.CharField(max_length=100, default='')
 
     def __init__(self, *args, **kwargs):

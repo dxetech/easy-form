@@ -11,7 +11,6 @@ class Migration(SchemaMigration):
         # Adding model 'Key'
         db.create_table('emailer_key', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('server_name', self.gf('django.db.models.fields.CharField')(max_length=100)),
             ('api_key', self.gf('django.db.models.fields.CharField')(default='', max_length=100)),
         ))
         db.send_create_signal('emailer', ['Key'])
@@ -27,7 +26,6 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Key'},
             'api_key': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '100'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'server_name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         }
     }
 
