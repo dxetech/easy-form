@@ -29,7 +29,7 @@ def json_response(func):
 
 @json_response
 def home(request):
-    return {"meta" : request.META["HTTP_HOST"]}
+    return {"message" : "index"}
 
 @json_response
 def mailer(request):
